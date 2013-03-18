@@ -21,7 +21,7 @@ import java.util.List;
 public class MainActivity extends ListActivity {
     public static final String WIFI = "Wi-Fi";
     public static final String ANY = "Any";
-    private static final String FEED_URL = "http://stackoverflow.com/feeds/tag?tagnames=android&sort=newest";
+    private static final String FEED_URL = "http://volcanoes.usgs.gov/rss/vhpcaprss.xml";//"http://stackoverflow.com/feeds/tag?tagnames=android&sort=newest";
 
     // Whether there is a Wi-Fi connection.
     private static boolean wifiConnected = false;
@@ -57,7 +57,7 @@ public class MainActivity extends ListActivity {
 
             for (Entry entry : entries) {
 
-                users.add(new UserRecord(entry.title, entry.link));
+                users.add(new UserRecord(entry.title, entry.link, entry.description, entry.alertLevel, entry.colorCode));
                 //entry.link;
                 //entry.summary;
                 //entry.title;
@@ -84,10 +84,6 @@ public class MainActivity extends ListActivity {
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             boolean pref = sharedPrefs.getBoolean("summaryPref", false);
 
-            StringBuilder htmlString = new StringBuilder();
-            htmlString.append("<h3>" + getResources().getString(R.string.page_title) + "</h3>");
-            htmlString.append("<em>" + getResources().getString(R.string.updated) + " " +
-                    formatter.format(rightNow.getTime()) + "</em>");
 
             try {
                 stream = downloadUrl(urlString);

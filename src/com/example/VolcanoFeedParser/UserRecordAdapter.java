@@ -1,10 +1,12 @@
 package com.example.VolcanoFeedParser;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,14 +42,36 @@ public class UserRecordAdapter extends ArrayAdapter<UserRecord> {
 
         if (user != null) {
             TextView username = (TextView) v.findViewById(R.id.username);
-            TextView email = (TextView) v.findViewById(R.id.email);
+            TextView link = (TextView) v.findViewById(R.id.link);
+            TextView description = (TextView) v.findViewById(R.id.description);
+            TextView alertLevel = (TextView) v.findViewById(R.id.alertLevel);
+            TextView colorCode = (TextView) v.findViewById(R.id.colorCode);
+            ImageView avatar = (ImageView) v.findViewById(R.id.avatar);
 
             if (username != null) {
                 username.setText(user.username);
             }
 
-            if (email != null) {
-                email.setText("Email: " + user.email);
+            if (link != null) {
+                link.setText("Link: " + user.link);
+            }
+
+            if (description != null) {
+                description.setText(Html.fromHtml(user.description));
+            }
+
+            if (alertLevel != null) {
+                alertLevel.setText(user.alertLevel.name());
+            }
+
+            if (colorCode != null) {
+                colorCode.setText(user.colorCode.name());
+            }
+
+            if (avatar != null) {
+
+                avatar.setImageResource(context.getResources()
+                        .getIdentifier(user.alertLevel.name().toLowerCase() + "_" + user.colorCode.name().toLowerCase(), "drawable", context.getPackageName()));
             }
         }
         return v;

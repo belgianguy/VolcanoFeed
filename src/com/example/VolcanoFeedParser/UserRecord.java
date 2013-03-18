@@ -9,10 +9,16 @@ package com.example.VolcanoFeedParser;
  */
 public class UserRecord {
     public String username;
-    public String email;
+    public String link;
+    public String description;
+    public AlertLevel alertLevel;
+    public ColorCode colorCode;
 
-    public UserRecord(String username, String email) {
+    public UserRecord(String username, String link, String description, AlertLevel alertLevel, ColorCode colorCode) {
         this.username = username;
-        this.email = email;
+        this.link = link;
+        this.description = description;
+        this.alertLevel = alertLevel;
+        this.colorCode = colorCode;
     }
 }
