@@ -12,9 +12,13 @@ public class Entry {
     public final String link;
     public final String summary;
 
+
+    public final String theChange;
+
     public Entry(String title, String summary, String link) {
         this.title = title;
         this.summary = summary;
         this.link = link;
+        this.theChange = "Now";
     }
 }
