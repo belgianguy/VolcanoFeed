@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VolcanoFeedParser</string>
+    <string name="connection_error">An error occurred while connecting!</string>
+    <string name="xml_error">An XML error occurred!</string>
+    <string name="page_title">Current threads:</string>
+    <string name="updated">Updated:</string>
+</resources>
