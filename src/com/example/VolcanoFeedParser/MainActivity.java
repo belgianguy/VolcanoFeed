@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.Toast;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -19,8 +18,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class MainActivity extends ListActivity
-{
+public class MainActivity extends ListActivity {
     public static final String WIFI = "Wi-Fi";
     public static final String ANY = "Any";
     private static final String FEED_URL = "http://stackoverflow.com/feeds/tag?tagnames=android&sort=newest";
@@ -57,8 +55,7 @@ public class MainActivity extends ListActivity
             //myWebView.loadData(result, "text/html", null);
             //Log.d("XMLPARSER", result);
 
-            for (Entry entry : entries)
-            {
+            for (Entry entry : entries) {
 
                 users.add(new UserRecord(entry.title, entry.link));
                 //entry.link;
@@ -128,8 +125,7 @@ public class MainActivity extends ListActivity
 
         // Given a string representation of a URL, sets up a connection and gets
         // an input stream.
-        private InputStream downloadUrl(String urlString) throws IOException
-        {
+        private InputStream downloadUrl(String urlString) throws IOException {
             URL url = new URL(urlString);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000 /* milliseconds */);
@@ -142,10 +138,11 @@ public class MainActivity extends ListActivity
         }
     }
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
@@ -165,32 +162,22 @@ public class MainActivity extends ListActivity
         setListAdapter(adapter);
 
 
-
     }
 
     // Uses AsyncTask to download the XML feed from stackoverflow.com.
-    public void loadPage()
-    {
+    public void loadPage() {
         sPref = ANY;
         wifiConnected = true;
 
 
-
-        if((sPref.equals(ANY)) && (wifiConnected || mobileConnected))
-        {
+        if ((sPref.equals(ANY)) && (wifiConnected || mobileConnected)) {
             new PullXmlTask().execute(FEED_URL);
-        }
-        else if ((sPref.equals(WIFI)) && (wifiConnected))
-        {
+        } else if ((sPref.equals(WIFI)) && (wifiConnected)) {
             new PullXmlTask().execute(FEED_URL);
-        }
-        else
-        {
+        } else {
             Toast.makeText(getApplicationContext(), "An error occurred!", Toast.LENGTH_LONG).show();
         }
     }
-
-
 
 
 }

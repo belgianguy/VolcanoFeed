@@ -53,7 +53,6 @@ public class MyXMLParser {
     }
 
 
-
     // Parses the contents of an entry. If it encounters a title, summary, or link tag, hands them off
     // to their respective "read" methods for processing. Otherwise, skips the tag.
     private Entry readEntry(XmlPullParser parser) throws XmlPullParserException, IOException {
@@ -94,7 +93,7 @@ public class MyXMLParser {
         String tag = parser.getName();
         String relType = parser.getAttributeValue(null, "rel");
         if (tag.equals("link")) {
-            if (relType.equals("alternate")){
+            if (relType.equals("alternate")) {
                 link = parser.getAttributeValue(null, "href");
                 parser.nextTag();
             }

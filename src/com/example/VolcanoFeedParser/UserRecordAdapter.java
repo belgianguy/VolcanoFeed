@@ -21,8 +21,7 @@ public class UserRecordAdapter extends ArrayAdapter<UserRecord> {
     private final Context context;
     private ArrayList<UserRecord> users;
 
-    public UserRecordAdapter(Context context, int textViewResourceId, ArrayList<UserRecord> users)
-    {
+    public UserRecordAdapter(Context context, int textViewResourceId, ArrayList<UserRecord> users) {
         super(context, textViewResourceId, users);
         this.context = context;
         this.users = users;
@@ -32,27 +31,23 @@ public class UserRecordAdapter extends ArrayAdapter<UserRecord> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
-        if (v == null)
-        {
+        if (v == null) {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.listitem, null);
         }
 
         UserRecord user = users.get(position);
 
-        if (user != null)
-        {
+        if (user != null) {
             TextView username = (TextView) v.findViewById(R.id.username);
             TextView email = (TextView) v.findViewById(R.id.email);
 
-            if (username != null)
-            {
+            if (username != null) {
                 username.setText(user.username);
             }
 
-            if(email != null)
-            {
-                email.setText("Email: " + user.email );
+            if (email != null) {
+                email.setText("Email: " + user.email);
             }
         }
         return v;
